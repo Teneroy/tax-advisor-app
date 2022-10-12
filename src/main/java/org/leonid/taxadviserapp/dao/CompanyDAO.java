@@ -1,5 +1,10 @@
 package org.leonid.taxadviserapp.dao;
 
+import org.leonid.taxadviserapp.entities.Company;
+import org.leonid.taxadviserapp.entities.User;
+
+import java.util.List;
+
 public interface CompanyDAO {
 
     List<Company> getAllUCompanies();

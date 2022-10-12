@@ -1,5 +1,9 @@
 package org.leonid.taxadviserapp.dao;
 
+import org.leonid.taxadviserapp.entities.User;
+
+import java.util.List;
+
 public interface UserDAO {
 
     List<User> getAllUsers();
