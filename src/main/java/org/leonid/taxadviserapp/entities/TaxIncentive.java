@@ -1,6 +1,6 @@
 package org.leonid.taxadviserapp.entities;
 
-public class TaxIncentives {
+public class TaxIncentive {
     private int taxIncentiveId;
     private String taxIncentiveName;
     private float taxIncentivePercentage;

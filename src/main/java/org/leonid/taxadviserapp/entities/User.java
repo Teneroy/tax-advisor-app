@@ -7,6 +7,7 @@ public class User {
     private String name;
     private int companyId;
     private String companyName;
+    private String position;
     private LocalDate birthDate;
 
 
@@ -40,6 +41,14 @@ public class User {
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public LocalDate getBirthDate() {
