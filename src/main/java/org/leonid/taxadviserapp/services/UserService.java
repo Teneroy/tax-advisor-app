@@ -14,16 +14,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public String getUserById(int id) {
-        return "Leonid" + id;
+    public User getUserById(int id) {
+        return userRepository.getUserById(id);
     }
 
     public boolean addUser(User user) {
         return userRepository.addUser(user);
-    }
-
-    public User findById(int id) {
-        return userRepository.getUserById(id);
     }
 
     public List<User> getAllUsers() {

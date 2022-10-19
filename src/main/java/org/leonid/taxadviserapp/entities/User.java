@@ -11,6 +11,25 @@ public class User {
     private LocalDate birthDate;
 
 
+    public User(int id, String name, int companyId, String companyName, String position, LocalDate birthDate) {
+        this.id = id;
+        this.name = name;
+        this.companyId = companyId;
+        this.companyName = companyName;
+        this.position = position;
+        this.birthDate = birthDate;
+    }
+
+    public User(String name, LocalDate birthDate, int companyId) {
+        this.name = name;
+        this.companyId = companyId;
+        this.birthDate = birthDate;
+    }
+
+    public User() {
+
+    }
+
     public int getId() {
         return id;
     }
