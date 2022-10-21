@@ -1,6 +1,7 @@
 package org.leonid.taxadviserapp.dao.postgresql;
 
 import org.leonid.taxadviserapp.dao.UserDAO;
+import org.leonid.taxadviserapp.dao.mappers.UserRawMapper;
 import org.leonid.taxadviserapp.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -26,7 +27,6 @@ public class UserDAOImpl implements UserDAO {
         namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
-
     @Override
     public List<User> getAllUsers() {
         return null;
@@ -34,7 +34,21 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getUserById(int id) {
-        return null;
+        UserRawMapper mapper = new UserRawMapper();
+        Map<String, Object> params = new HashMap<>();
+        params.put("id", id);
+
+        String sqlQuery = "SELECT users.id as id, name, birth_date, company_id " +
+                "FROM users JOIN companies c on users.company_id = c.id " +
+                "WHERE users.id = :id;";
+
+        try {
+            return namedParameterJdbcTemplate.queryForObject(sqlQuery, params, mapper);
+        } catch (DataAccessException e) {
+            LOGGER.info(e.getMessage());
+            return null;
+        }
+
     }
 
     @Override

@@ -3,9 +3,11 @@ package org.leonid.taxadviserapp.services;
 import org.leonid.taxadviserapp.dao.CompanyDAO;
 import org.leonid.taxadviserapp.entities.Company;
 import org.leonid.taxadviserapp.entities.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CompanyService {
 
     private final CompanyDAO companyRepository;
@@ -17,6 +19,7 @@ public class CompanyService {
     public List<Company> getAllCompanies() {
         return companyRepository.getAllCompanies();
     }
+
 
     public boolean addCompany(Company company) {
         return companyRepository.addCompany(company);

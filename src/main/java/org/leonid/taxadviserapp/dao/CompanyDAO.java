@@ -3,9 +3,12 @@ package org.leonid.taxadviserapp.dao;
 import org.leonid.taxadviserapp.entities.Company;
 import org.leonid.taxadviserapp.entities.User;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 public interface CompanyDAO {
+
+    void setDataSource(DataSource dataSource);
 
     List<Company> getAllCompanies();
 
