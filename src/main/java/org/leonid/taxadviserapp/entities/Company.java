@@ -12,6 +12,10 @@ public class Company {
         this.companyType = companyType;
     }
 
+    public Company() {
+
+    }
+
     public int getId() {
         return id;
     }
