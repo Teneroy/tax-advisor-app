@@ -51,9 +51,7 @@ public class UserDAOImpl implements UserDAO {
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);
 
-        String sqlQuery = "SELECT users.id as id, name, birth_date, company_id " +
-                "FROM users JOIN companies c on users.company_id = c.id " +
-                "WHERE users.id = :id;";
+        String sqlQuery = "SELECT * FROM users WHERE id = :id;";
 
         try {
             return namedParameterJdbcTemplate.queryForObject(sqlQuery, params, mapper);

@@ -6,9 +6,10 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class TaxIncentivesRowMapper implements RowMapper {
+public class TaxIncentiveRowMapper implements RowMapper<TaxIncentive> {
+
     @Override
-    public Object mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public TaxIncentive mapRow(ResultSet rs, int rowNum) throws SQLException {
         TaxIncentive taxIncentive = new TaxIncentive();
 
         taxIncentive.setTaxIncentiveId(rs.getInt("id"));

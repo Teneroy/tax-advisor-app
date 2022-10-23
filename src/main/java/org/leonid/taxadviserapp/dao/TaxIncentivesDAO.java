@@ -4,9 +4,12 @@ import org.leonid.taxadviserapp.entities.Company;
 import org.leonid.taxadviserapp.entities.TaxIncentive;
 import org.leonid.taxadviserapp.entities.User;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 public interface TaxIncentivesDAO {
+
+    void setDataSource(DataSource dataSource);
 
     List<TaxIncentive> getAllTaxIncentives();
 
