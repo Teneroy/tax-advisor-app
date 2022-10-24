@@ -4,9 +4,11 @@ import org.leonid.taxadviserapp.dao.TaxIncentivesDAO;
 import org.leonid.taxadviserapp.entities.Company;
 import org.leonid.taxadviserapp.entities.TaxIncentive;
 import org.leonid.taxadviserapp.entities.User;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TaxIncentivesService {
 
     private final TaxIncentivesDAO taxIncentivesRepository;

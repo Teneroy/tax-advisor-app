@@ -7,6 +7,17 @@ public class TaxIncentive {
     private String companyTypeForTaxIncentive;
     private int ageRangeForTaxIncentive;
 
+    public TaxIncentive(String taxIncentiveName, String companyTypeForTaxIncentive, float taxIncentivePercentage, int ageRangeForTaxIncentive) {
+        this.taxIncentiveName = taxIncentiveName;
+        this.taxIncentivePercentage = taxIncentivePercentage;
+        this.companyTypeForTaxIncentive = companyTypeForTaxIncentive;
+        this.ageRangeForTaxIncentive = ageRangeForTaxIncentive;
+    }
+
+    public TaxIncentive() {
+    }
+
+
     public int getTaxIncentiveId() {
         return taxIncentiveId;
     }
