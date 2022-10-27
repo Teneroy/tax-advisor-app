@@ -92,7 +92,7 @@ public class TaxIncentiveDAOImpl implements TaxIncentivesDAO {
 
         params.put("tax_incentive_name", taxIncentive.getTaxIncentiveName());
         params.put("tax_incentive_percentage", taxIncentive.getTaxIncentivePercentage());
-        params.put("company_type_for_tax_incentive", taxIncentive.getCompanyTypeForTaxIncentive());;
+        params.put("company_type_for_tax_incentive", taxIncentive.getCompanyTypeForTaxIncentive());
         params.put("age_Range_for_tax_incentive", taxIncentive.getAgeRangeForTaxIncentive());
 
         String sqlQuery = "INSERT INTO tax_incentives(tax_incentive_name, tax_incentive_percentage, company_type_for_tax_incentive, age_Range_for_tax_incentive)\n" +
@@ -115,7 +115,7 @@ public class TaxIncentiveDAOImpl implements TaxIncentivesDAO {
         params.put("tax_incentive_id", taxIncentive.getTaxIncentiveId());
         params.put("tax_incentive_name", taxIncentive.getTaxIncentiveName());
         params.put("tax_incentive_percentage", taxIncentive.getTaxIncentivePercentage());
-        params.put("company_type_for_tax_incentive", taxIncentive.getCompanyTypeForTaxIncentive());;
+        params.put("company_type_for_tax_incentive", taxIncentive.getCompanyTypeForTaxIncentive());
         params.put("age_Range_for_tax_incentive", taxIncentive.getAgeRangeForTaxIncentive());
 
         String sqlQuery = "UPDATE  tax_incentives SET tax_incentive_name = :tax_incentive_name, " +
@@ -160,9 +160,9 @@ public class TaxIncentiveDAOImpl implements TaxIncentivesDAO {
 
         params.put("id", id);
 
-        String sqlQuery = "SELECT u.id as id, name, birth_date, company_id, company_name " +
-                "FROM tax_incentives JOIN users u on tax_incentives.id = u.tax_incentive_id" +
-                " WHERE tax_incentives.id = :id;";
+        String sqlQuery = "SELECT u.id as id, name, birth_date, company_id, tax_incentive_id\n" +
+                "FROM tax_incentives JOIN users u on tax_incentives.id = u.tax_incentive_id\n" +
+                "WHERE tax_incentives.id = null;";
 
         try {
             list = namedParameterJdbcTemplate.query(sqlQuery, params, mapper);
@@ -181,7 +181,9 @@ public class TaxIncentiveDAOImpl implements TaxIncentivesDAO {
 
         params.put("id", id);
 
-        String sqlQuery = "";
+        String sqlQuery = "SELECT companies.id as id, company_name, company_type, address " +
+                "FROM companies JOIN tax_incentives ON companies.company_type=tax_incentives.company_type_for_tax_incentive " +
+                "WHERE tax_incentives.id = 1";
 
         try {
             list = namedParameterJdbcTemplate.query(sqlQuery, params, mapper);

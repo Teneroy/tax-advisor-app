@@ -6,20 +6,26 @@ public class User {
     private int id;
     private String name;
     private int companyId;
-    private String companyName;
     private String position;
     private LocalDate birthDate;
+    private int taxIncentiveId;
 
 
-    public User(int id, String name, int companyId, String companyName, String position, LocalDate birthDate) {
+    public User(int id, String name, int companyId, String position, LocalDate birthDate, int taxIncentiveId) {
         this.id = id;
         this.name = name;
         this.companyId = companyId;
-        this.companyName = companyName;
         this.position = position;
         this.birthDate = birthDate;
+        this.taxIncentiveId = taxIncentiveId;
     }
-
+    public User(String name, int companyId, String position, LocalDate birthDate, int taxIncentiveId) {
+        this.name = name;
+        this.companyId = companyId;
+        this.position = position;
+        this.birthDate = birthDate;
+        this.taxIncentiveId = taxIncentiveId;
+    }
     public User(String name, LocalDate birthDate, int companyId) {
         this.name = name;
         this.companyId = companyId;
@@ -54,14 +60,6 @@ public class User {
         this.companyId = companyId;
     }
 
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
     public String getPosition() {
         return position;
     }
@@ -76,5 +74,13 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public int getTaxIncentiveId() {
+        return taxIncentiveId;
+    }
+
+    public void setTaxIncentiveId(int taxIncentiveId) {
+        this.taxIncentiveId = taxIncentiveId;
     }
 }
