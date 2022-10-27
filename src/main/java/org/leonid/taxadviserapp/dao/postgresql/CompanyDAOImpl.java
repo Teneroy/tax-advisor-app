@@ -93,8 +93,8 @@ public class CompanyDAOImpl implements CompanyDAO {
         params.put("address", company.getAddress());
         params.put("company_type", company.getCompanyType());
 
-        String sqlQuery = "INSERT INTO companies(company_name, address, company_type)\n" +
-                "VALUES (:company_name, :address, :company_type);";
+        String sqlQuery = "INSERT INTO companies(company_name, company_type, address )\n" +
+                "VALUES (:company_name, :company_type, :address);";
 
         try {
             affectedRows = namedParameterJdbcTemplate.update(sqlQuery, params);
@@ -158,9 +158,9 @@ public class CompanyDAOImpl implements CompanyDAO {
 
         params.put("id", id);
 
-        String sqlQuery = "SELECT u.id as id, name, birth_date, company_id, company_name " +
-                "FROM companies JOIN users u on companies.id = u.company_id" +
-                " WHERE companies.id = :id;";
+        String sqlQuery = "SELECT u.id as id, name, birth_date, company_id, position, tax_incentive_id\n" +
+                "FROM companies JOIN users u on companies.id = u.company_id " +
+                "WHERE companies.id = :id;";
 
         try {
             list = namedParameterJdbcTemplate.query(sqlQuery, params, mapper);

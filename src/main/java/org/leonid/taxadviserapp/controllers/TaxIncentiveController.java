@@ -1,6 +1,8 @@
 package org.leonid.taxadviserapp.controllers;
 
+import org.leonid.taxadviserapp.entities.Company;
 import org.leonid.taxadviserapp.entities.TaxIncentive;
+import org.leonid.taxadviserapp.entities.User;
 import org.leonid.taxadviserapp.services.TaxIncentivesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -61,4 +64,25 @@ public class TaxIncentiveController {
         response.put("error", "");
         return response;
     }
+
+    @PostMapping("/getTaxIncentiveById")
+    public TaxIncentive getTaxIncentiveById(@RequestParam int taxIncentiveId) {
+        return taxService.findTaxIncentiveById(taxIncentiveId);
+    }
+
+    @PostMapping("/getAllTaxIncentives")
+    public List<TaxIncentive> getAllTaxIncentives() {
+        return taxService.getAllTaxIncentives();
+    }
+
+    @PostMapping("/getTaxIncentiveByName")
+    public TaxIncentive findTaxIncentiveByName(@RequestParam String companyName) {
+        return taxService.findTaxIncentiveByName(companyName);
+    }
+
+    @PostMapping("/getUsersByTaxIncentiveId")
+    public List<User> getUsersByTaxIncentiveId(@RequestParam int taxIncentiveId) {
+        return taxService.getUsersByTaxIncentiveId(taxIncentiveId);
+    }
+
 }

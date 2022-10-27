@@ -8,16 +8,24 @@ public class User {
     private int companyId;
     private String position;
     private LocalDate birthDate;
+    private int taxIncentiveId;
 
 
-    public User(int id, String name, int companyId, String position, LocalDate birthDate) {
+    public User(int id, String name, int companyId, String position, LocalDate birthDate, int taxIncentiveId) {
         this.id = id;
         this.name = name;
         this.companyId = companyId;
         this.position = position;
         this.birthDate = birthDate;
+        this.taxIncentiveId = taxIncentiveId;
     }
-
+    public User(String name, int companyId, String position, LocalDate birthDate, int taxIncentiveId) {
+        this.name = name;
+        this.companyId = companyId;
+        this.position = position;
+        this.birthDate = birthDate;
+        this.taxIncentiveId = taxIncentiveId;
+    }
     public User(String name, LocalDate birthDate, int companyId) {
         this.name = name;
         this.companyId = companyId;
@@ -66,5 +74,13 @@ public class User {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public int getTaxIncentiveId() {
+        return taxIncentiveId;
+    }
+
+    public void setTaxIncentiveId(int taxIncentiveId) {
+        this.taxIncentiveId = taxIncentiveId;
     }
 }

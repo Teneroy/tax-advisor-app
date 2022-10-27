@@ -33,8 +33,7 @@ public class UserDAOImpl implements UserDAO {
         UserRowMapper mapper = new UserRowMapper();
         List<User> list;
 
-        String sqlQuery = "SELECT users.id as id, name, birth_date, company_id, " +
-                "FROM users JOIN companies c on users.company_id = c.id ORDER BY id DESC;";
+        String sqlQuery = "SELECT * FROM users  ORDER BY id DESC;";
 
         try {
             list = namedParameterJdbcTemplate.query(sqlQuery, mapper);
@@ -68,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
         Map<String, Object> params = new HashMap<>();
         params.put("name", name);
 
-        String sqlQuery = "select";
+        String sqlQuery = "SELECT * FROM users WHERE name = :name";
 
         try {
             return namedParameterJdbcTemplate.queryForObject(sqlQuery, params, mapper);
@@ -107,14 +106,16 @@ public class UserDAOImpl implements UserDAO {
         int affectedRows;
 
         params.put("id", user.getId());
-        params.put("name", user.getName());;
+        params.put("name", user.getName());
         params.put("birth_date", user.getBirthDate());
         params.put("company_id", user.getCompanyId());
+        params.put("tax_incentive_id", user.getCompanyId());
 
         String sqlQuery = "UPDATE users " +
                 "SET name = :name, " +
                 "birth_date = date(:birth_date), " +
-                "company_id = :company_id " +
+                "company_id = :company_id," +
+                "tax_incentive_id = :tax_incentive_id " +
                 "WHERE id = :id;";
 
         try {
@@ -144,4 +145,6 @@ public class UserDAOImpl implements UserDAO {
             return false;
         }
     }
+
+
 }

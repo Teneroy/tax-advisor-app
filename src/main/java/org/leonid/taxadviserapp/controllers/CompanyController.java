@@ -1,6 +1,7 @@
 package org.leonid.taxadviserapp.controllers;
 
 import org.leonid.taxadviserapp.entities.Company;
+import org.leonid.taxadviserapp.entities.User;
 import org.leonid.taxadviserapp.services.CompanyService;
 import org.leonid.taxadviserapp.services.TaxIncentivesService;
 import org.leonid.taxadviserapp.services.UserService;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -55,6 +57,26 @@ public class CompanyController {
         response.put("error", "");
         return response;
 
+    }
+
+    @PostMapping("/getCompanyById")
+    public Company getId(@RequestParam int CompanyId) {
+        return companyService.findCompanyById(CompanyId);
+    }
+
+    @PostMapping("/getAllCompanies")
+    public List<Company> getAllCompanies() {
+        return companyService.getAllCompanies();
+    }
+
+    @PostMapping("/getCompanyByName")
+    public Company getCompanyByName(@RequestParam String companyName) {
+        return companyService.findCompanyByName(companyName);
+    }
+
+    @PostMapping("/getUsersByCompanyId")
+    public List<User> getUsersByCompanyId(@RequestParam int companyId) {
+        return companyService.getUsersByCompanyId(companyId);
     }
 
 }

@@ -37,9 +37,7 @@ public class CompanyService {
         return companyRepository.updateCompany(company);
     }
 
-    public List<User> getUsersByCompanyId(int id) {
-
-
+    public List<User> getUsersByCompanyId(int id){
         return companyRepository.getUsersByCompanyId(id);
     }
 
