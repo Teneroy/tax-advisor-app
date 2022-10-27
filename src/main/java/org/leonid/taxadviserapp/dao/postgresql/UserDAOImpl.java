@@ -33,7 +33,7 @@ public class UserDAOImpl implements UserDAO {
         UserRowMapper mapper = new UserRowMapper();
         List<User> list;
 
-        String sqlQuery = "SELECT users.id as id, name, birth_date, company_id, company_name " +
+        String sqlQuery = "SELECT users.id as id, name, birth_date, company_id, " +
                 "FROM users JOIN companies c on users.company_id = c.id ORDER BY id DESC;";
 
         try {
@@ -113,7 +113,8 @@ public class UserDAOImpl implements UserDAO {
 
         String sqlQuery = "UPDATE users " +
                 "SET name = :name, " +
-                "birth_date = date(:birth_date), company_id = :company_id " +
+                "birth_date = date(:birth_date), " +
+                "company_id = :company_id " +
                 "WHERE id = :id;";
 
         try {

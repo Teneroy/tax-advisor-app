@@ -6,16 +6,14 @@ public class User {
     private int id;
     private String name;
     private int companyId;
-    private String companyName;
     private String position;
     private LocalDate birthDate;
 
 
-    public User(int id, String name, int companyId, String companyName, String position, LocalDate birthDate) {
+    public User(int id, String name, int companyId, String position, LocalDate birthDate) {
         this.id = id;
         this.name = name;
         this.companyId = companyId;
-        this.companyName = companyName;
         this.position = position;
         this.birthDate = birthDate;
     }
@@ -52,14 +50,6 @@ public class User {
 
     public void setCompanyId(int companyId) {
         this.companyId = companyId;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
     }
 
     public String getPosition() {
